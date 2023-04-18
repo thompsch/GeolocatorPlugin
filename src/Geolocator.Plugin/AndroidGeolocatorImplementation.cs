@@ -12,6 +12,7 @@ using Android.Runtime;
 using Address = Plugin.Geolocator.Abstractions.Address;
 using Xamarin.Essentials;
 using Location = Android.Locations.Location;
+using Plugin.Geolocator.Abstractions;
 
 namespace Plugin.Geolocator
 {
@@ -19,7 +20,7 @@ namespace Plugin.Geolocator
 	/// Implementation for Feature
 	/// </summary>
 	[Preserve(AllMembers = true)]
-	public class GeolocatorImplementation : IGeolocator
+	public class AndroidGeolocatorImplementation : IGeolocator
 	{
 		readonly string[] allProviders;
 		LocationManager locationManager;
@@ -33,7 +34,7 @@ namespace Plugin.Geolocator
 		/// <summary>
 		/// Default constructor
 		/// </summary>
-		public GeolocatorImplementation()
+		public AndroidGeolocatorImplementation()
 		{
 			DesiredAccuracy = 100;
 		}

@@ -1,4 +1,5 @@
 ﻿using Plugin.Geolocator.Abstractions;
+using Plugin.Geolocator;
 using System;
 
 namespace Plugin.Geolocator
@@ -8,7 +9,8 @@ namespace Plugin.Geolocator
 	/// </summary>
 	public class CrossGeolocator
 	{
-		static Lazy<IGeolocator> implementation = new Lazy<IGeolocator>(() => CreateGeolocator(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
+		static Lazy<IGeolocator> implementation =
+			new Lazy<IGeolocator>(() => CreateGeolocator(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
 		/// <summary>
 		/// Gets if the plugin is supported on the current platform.
 		/// </summary>
@@ -35,7 +37,7 @@ namespace Plugin.Geolocator
 #if NETSTANDARD1_0 || NETSTANDARD2_0
 			return null;
 #else
-			return new GeolocatorImplementation();
+			return new AndroidGeolocatorImplementation();
 #endif
 		}
 
